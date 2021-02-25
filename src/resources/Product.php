@@ -52,7 +52,7 @@ class Product extends Resource
             Text::make('Short Description', 'short_description')->rules('required')->hideFromIndex(),
             Textarea::make('Description')->rules('required'),
             Number::make('Stock')->rules('required'),
-            Currency::make('Price')->rules('required'),
+            Number::make('Price')->rules('required')->step('0.01'),
             BelongsTo::make('Category'),
             HasOne::make('Features', 'features', 'App\Nova\Features'),
             Boolean::make('Visible'),

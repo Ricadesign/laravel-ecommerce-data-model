@@ -52,12 +52,12 @@ class Order extends Resource
             Text::make('Shipping Type', 'shipping_type'),
             Date::make('Shipping Date', 'shipping_date')->format('DD/MM/YYYY')->pickerDisplayFormat('d/m/Y'),
             Date::make('Refund deadline', 'refund_deadline')->format('DD/MM/YYYY')->pickerDisplayFormat('d/m/Y'),
-            Currency::make('subtotal'),
-            Currency::make('total'),
+            Number::make('subtotal')->step('0.01'),
+            Number::make('total')->step('0.01'),
             BelongsToMany::make('Products')->fields(function () {
                 return [
                     Number::make('Quantity'),
-                    Currency::make('Price'),
+                    Number::make('Price')->step('0.01'),
                 ];
             }),
         ];
