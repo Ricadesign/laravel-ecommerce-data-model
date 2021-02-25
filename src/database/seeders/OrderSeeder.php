@@ -23,7 +23,7 @@ class OrderSeeder extends Seeder
         Order::all()->each(function($order) {
             $order->products()->attach(
                 Product::whereIn('id', [1, 2, 3])->get(),
-                ['quantity' => 1]
+                ['quantity' => 1, 'price' => 5]
             );
         });
     }

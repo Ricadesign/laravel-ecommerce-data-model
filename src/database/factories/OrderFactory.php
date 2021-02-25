@@ -29,8 +29,8 @@ class OrderFactory extends Factory
             'shipping_date' => Carbon::now()->addDay(),
             'shipping_type' => 'standard',
             'refund_limit_date' => Carbon::now()->addWeeks(2),
-            'subtotal' => 10,
-            'total' => 10,
+            'subtotal' => 15,
+            'total' => 15,
         ];
     }
 }

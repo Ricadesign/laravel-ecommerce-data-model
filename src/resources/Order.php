@@ -10,6 +10,7 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\BelongsToMany;
+use Laravel\Nova\Fields\Currency;
 
 class Order extends Resource
 {
@@ -52,9 +53,14 @@ class Order extends Resource
             Date::make('shipping_date'),
             Text::make('shipping_type'),
             Date::make('refund_limit_date'),
-            Number::make('subtotal'),
-            Number::make('total'),
-            BelongsToMany::make('Products'),
+            Currency::make('subtotal'),
+            Currency::make('total'),
+            BelongsToMany::make('Products')->fields(function () {
+                return [
+                    Number::make('Quantity'),
+                    Currency::make('Price'),
+                ];
+            }),
         ];
     }
 
