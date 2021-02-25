@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Address;
 
 class OrderSeeder extends Seeder
 {
@@ -16,9 +17,16 @@ class OrderSeeder extends Seeder
      */
     public function run()
     {
-        User::factory()->create()->orders()->saveMany(
+        $user = User::factory()->create();
+
+        $user->orders()->saveMany(
             Order::factory()->count(3)->make()
         );
+
+        $user->addresses()->saveMany([
+          Address::factory()->make(),
+          Address::factory()->make(['favorite' => false]),
+        ]);
 
         Order::all()->each(function($order) {
             $order->products()->attach(

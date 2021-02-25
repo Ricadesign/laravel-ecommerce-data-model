@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Address;
 
 class AddressFactory extends Factory
 {
@@ -23,7 +24,7 @@ class AddressFactory extends Factory
         return [
             'name' => $this->faker->name,
             'address' => $this->faker->streetAddress,
-            'postal_code' => $this->faker->postalcode,
+            'postal_code' => $this->faker->postcode,
             'city' => $this->faker->city,
             'favorite' => true,
         ];
