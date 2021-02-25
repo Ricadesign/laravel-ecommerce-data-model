@@ -47,14 +47,14 @@ class Order extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
-            Text::make('code'),
+            Text::make('Code'),
             BelongsTo::make('User'),
             Select::make('Status')->options(OrderModel::STATUSES)->displayUsingLabels(),
             Select::make('Shipping Type', 'shipping_type')->options(OrderModel::SHIPPING_TYPES)->displayUsingLabels(),
             Date::make('Shipping Date', 'shipping_date')->format('DD/MM/YYYY')->pickerDisplayFormat('d/m/Y'),
             Date::make('Refund deadline', 'refund_deadline')->format('DD/MM/YYYY')->pickerDisplayFormat('d/m/Y'),
-            Number::make('subtotal')->step('0.01'),
-            Number::make('total')->step('0.01'),
+            Number::make('Subtotal')->step('0.01'),
+            Number::make('Total')->step('0.01'),
             BelongsToMany::make('Products')->fields(function () {
                 return [
                     Number::make('Quantity'),

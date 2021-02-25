@@ -42,8 +42,8 @@ class Category extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
-            Text::make('name'),
-            Slug::make('slug')->from('name'),
+            Text::make('Name'),
+            Slug::make('Slug')->from('name'),
         ];
     }
 
