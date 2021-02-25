@@ -5,7 +5,7 @@
   "require": {
     "php": "^7.4",
     "ebess/advanced-nova-media-library": "^3.4",
-    "laravel/framework": "^8.0 | ^7.0",
+    "laravel/framework": "^8.0",
     "laravel/nova": "~3.0",
     "spatie/laravel-medialibrary": "^9.0.0",
   },
