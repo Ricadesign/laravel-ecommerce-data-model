@@ -1,35 +1,35 @@
 {
-  "name": "ricadesign/laravel-ecommerce-data-model",
-  "description": "Laravel migrations, models and Nova resources for the creation of an ecommerce site",
-  "type": "library",
-  "require": {
-    "php": "^7.4",
-    "ebess/advanced-nova-media-library": "^3.4",
-    "laravel/framework": "^8.0",
-    "laravel/nova": "~3.0",
-    "spatie/laravel-medialibrary": "^9.0.0",
-  },
-  "require-dev": {
-    "phpunit/phpunit": "10.0.x-dev"
-  },
-  "license": "MIT",
-  "autoload": {
-    "psr-4": {
-      "Ricadesign\\LaravelEcommerceDataModel\\": "src/"
-    }
-  },
-  "extra": {
-    "laravel": {
-      "providers": [
-        "Ricadesign\\LaravelEcommerceDataModel\\LaravelEcommerceDataModelServiceProvider"
-      ]
-    }
-  },
-  "authors": [
-    {
-      "name": "David Luque",
-      "email": "dluque@rica.design"
-    }
-  ],
-  "minimum-stability": "dev"
+    "name": "ricadesign/laravel-ecommerce-data-model",
+    "description": "Laravel migrations, models and Nova resources for the creation of an ecommerce site",
+    "type": "library",
+    "require": {
+        "php": "^7.4",
+        "ebess/advanced-nova-media-library": "^3.4",
+        "laravel/framework": "^8.0",
+        "laravel/nova": "~3.0",
+        "spatie/laravel-medialibrary": "^9.0.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "10.0.x-dev"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Ricadesign\\LaravelEcommerceDataModel\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ricadesign\\LaravelEcommerceDataModel\\LaravelEcommerceDataModelServiceProvider"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "David Luque",
+            "email": "dluque@rica.design"
+        }
+    ],
+    "minimum-stability": "dev"
 }
