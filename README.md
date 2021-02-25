@@ -10,17 +10,24 @@ composer require ricadesign/laravel-ecommerce-data-model
 
 ## Publishing everything
 ```bash
-php artisan vendor:publish --tag=ecommerce-data-model
+php artisan vendor:publish --tag=ricadesign/laravel-ecommerce-data-model
 ```
 
 Add fields to create_features_table migration. Edit other migrations as needed before running them.
 
 ## Using seeders
-If needed, call the following seeders from your main seeder:
+If needed, call the following seeders from your main seeder. Make sure to add the relationship below on your User model before doing so:
 ```bash
 $this->call([
     CategorySeeder::class,
     ProductSeeder::class,
     OrderSeeder::class,
 ]);
+```
+
+```bash
+public function orders()
+{
+    return $this->hasMany(Order::class);
+}
 ```

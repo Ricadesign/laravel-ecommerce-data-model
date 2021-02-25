@@ -28,6 +28,6 @@ class LaravelEcommerceDataModelServiceProvider extends ServiceProvider
             __DIR__.'/database/seeders' => database_path('seeders'),
             __DIR__.'/models' => app_path('Models'),
             __DIR__.'/resources' => app_path('Nova'),
-        ], 'ecommerce-data-model');
+        ], 'ricadesign/laravel-ecommerce-data-model');
     }
 }
