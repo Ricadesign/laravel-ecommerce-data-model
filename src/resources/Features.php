@@ -4,11 +4,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Http\Requests\NovaRequest;
-use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\BelongsTo;
-use Spatie\NovaTranslatable\Translatable;
-use Laravel\Nova\Fields\Number;
 
 class Features extends Resource
 {

@@ -11,7 +11,7 @@ class Order extends Model
 
     protected $casts = [
         'shipping_date' => 'date',
-        'refund_limit_date' => 'date',
+        'refund_deadline' => 'date',
     ];
 
     public function user()

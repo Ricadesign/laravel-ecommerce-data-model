@@ -18,9 +18,9 @@ class CreateOrdersTable extends Migration
             $table->foreignId('user_id')->constrained();
             $table->string('code');
             $table->string('status');
-            $table->date('shipping_date');
             $table->string('shipping_type');
-            $table->date('refund_limit_date');
+            $table->date('shipping_date');
+            $table->date('refund_deadline');
             $table->float('subtotal');
             $table->float('total');
             $table->timestamps();

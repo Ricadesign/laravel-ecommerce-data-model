@@ -4,7 +4,6 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Date;
@@ -50,9 +49,9 @@ class Order extends Resource
             Text::make('code'),
             BelongsTo::make('User'),
             Text::make('status'),
-            Date::make('shipping_date'),
-            Text::make('shipping_type'),
-            Date::make('refund_limit_date'),
+            Text::make('Shipping Type', 'shipping_type'),
+            Date::make('Shipping Date', 'shipping_date')->format('DD/MM/YYYY')->pickerDisplayFormat('d/m/Y'),
+            Date::make('Refund deadline', 'refund_deadline')->format('DD/MM/YYYY')->pickerDisplayFormat('d/m/Y'),
             Currency::make('subtotal'),
             Currency::make('total'),
             BelongsToMany::make('Products')->fields(function () {
