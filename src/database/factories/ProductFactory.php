@@ -23,7 +23,7 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $name = $this->faker->name,
+            'name' => $name = ucfirst($this->faker->words(3, true)),
             'slug' =>  Str::slug($name),
             'short_description' => $this->faker->sentence(3, false),
             'description' => $this->faker->paragraph(3, false),
