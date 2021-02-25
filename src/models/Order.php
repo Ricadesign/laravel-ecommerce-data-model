@@ -2,10 +2,18 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
+    use HasFactory;
+
+    protected $casts = [
+        'shipping_date' => 'date',
+        'refund_limit_date' => 'date',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
