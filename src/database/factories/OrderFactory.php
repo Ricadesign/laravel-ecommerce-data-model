@@ -24,7 +24,7 @@ class OrderFactory extends Factory
     public function definition()
     {
         return [
-            'status' => 'completed',
+            'status' => 'received',
             'code' => Str::random(10),
             'shipping_date' => Carbon::now()->addDay(),
             'shipping_type' => 'standard',

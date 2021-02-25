@@ -14,6 +14,15 @@ class Order extends Model
         'refund_deadline' => 'date',
     ];
 
+    const STATUSES = [
+        'received' => 'Received',
+        'delivered' => 'Delivered',
+        'refunded' => 'Refunded',
+    ];
+    const SHIPPING_TYPES = [
+        'standard' => 'Standard',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);

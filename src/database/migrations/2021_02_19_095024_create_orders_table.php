@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\Order;
 
 class CreateOrdersTable extends Migration
 {
@@ -17,8 +18,8 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->string('code');
-            $table->string('status');
-            $table->string('shipping_type');
+            $table->enum('status', array_keys(Order::STATUSES));
+            $table->enum('shipping_type', array_keys(Order::SHIPPING_TYPES));
             $table->date('shipping_date');
             $table->date('refund_deadline');
             $table->float('subtotal');

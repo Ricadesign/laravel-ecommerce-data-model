@@ -9,7 +9,8 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\BelongsToMany;
-use Laravel\Nova\Fields\Currency;
+use App\Models\Order as OrderModel;
+use Laravel\Nova\Fields\Select;
 
 class Order extends Resource
 {
@@ -48,8 +49,8 @@ class Order extends Resource
             ID::make(__('ID'), 'id')->sortable(),
             Text::make('code'),
             BelongsTo::make('User'),
-            Text::make('status'),
-            Text::make('Shipping Type', 'shipping_type'),
+            Select::make('Status')->options(OrderModel::STATUSES)->displayUsingLabels(),
+            Select::make('Shipping Type', 'shipping_type')->options(OrderModel::SHIPPING_TYPES)->displayUsingLabels(),
             Date::make('Shipping Date', 'shipping_date')->format('DD/MM/YYYY')->pickerDisplayFormat('d/m/Y'),
             Date::make('Refund deadline', 'refund_deadline')->format('DD/MM/YYYY')->pickerDisplayFormat('d/m/Y'),
             Number::make('subtotal')->step('0.01'),
