@@ -16,7 +16,7 @@ class OrderSeeder extends Seeder
      */
     public function run()
     {
-        User::find(1)->orders()->saveMany(
+        User::factory()->create()->orders()->saveMany(
             Order::factory()->count(3)->make()
         );
 
