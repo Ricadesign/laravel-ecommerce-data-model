@@ -16,9 +16,11 @@ php artisan vendor:publish --tag=ecommerce-data-model
 Add fields to create_features_table migration. Edit other migrations as needed before running them.
 
 ## Using seeders
-If needed, add the following seeders to your main seeder:
+If needed, call the following seeders from your main seeder:
 ```bash
-CategorySeeder::class,
-ProductSeeder::class,
-OrderSeeder::class,
+$this->call([
+    CategorySeeder::class,
+    ProductSeeder::class,
+    OrderSeeder::class,
+]);
 ```
