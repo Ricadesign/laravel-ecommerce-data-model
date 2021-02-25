@@ -16,7 +16,7 @@ php artisan vendor:publish --tag=ricadesign/laravel-ecommerce-data-model
 Add fields to create_features_table migration. Edit other migrations as needed before running them.
 
 ## Using seeders
-If needed, call the following seeders from your main seeder. Make sure to add the relationship below on your User model before doing so:
+If needed, call the following seeders from your main seeder. Make sure to add the relationships below on your User model before doing so:
 ```bash
 $this->call([
     CategorySeeder::class,
@@ -26,6 +26,11 @@ $this->call([
 ```
 
 ```bash
+public function addresses()
+{
+    return $this->hasMany(Address::class);
+}
+
 public function orders()
 {
     return $this->hasMany(Order::class);
