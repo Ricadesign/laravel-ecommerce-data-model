@@ -28,6 +28,7 @@ class OrderFactory extends Factory
             'code' => Str::random(10),
             'shipping_date' => Carbon::now()->addDay(),
             'shipping_type' => 'standard',
+            'shipping_address' => preg_replace('/\s+/', ' ', $this->faker->address),
             'refund_deadline' => Carbon::now()->addWeeks(2),
             'subtotal' => 15,
             'total' => 15,

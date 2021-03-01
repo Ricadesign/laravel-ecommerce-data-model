@@ -52,6 +52,7 @@ class Order extends Resource
             Select::make('Status')->options(OrderModel::STATUSES)->displayUsingLabels(),
             Select::make('Shipping Type', 'shipping_type')->options(OrderModel::SHIPPING_TYPES)->displayUsingLabels(),
             Date::make('Shipping Date', 'shipping_date')->format('DD/MM/YYYY')->pickerDisplayFormat('d/m/Y'),
+            Text::make('Shipping Address', 'shipping_address')->hideFromIndex(),
             Date::make('Refund deadline', 'refund_deadline')->format('DD/MM/YYYY')->pickerDisplayFormat('d/m/Y'),
             Number::make('Subtotal')->step('0.01'),
             Number::make('Total')->step('0.01'),
