@@ -5,8 +5,8 @@ namespace App\Nova;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Date;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\BelongsToMany;
 use App\Models\Order as OrderModel;
@@ -48,6 +48,7 @@ class Order extends Resource
         return [
             ID::make(__('ID'), 'id')->sortable(),
             Text::make('Code'),
+            Date::make('Created At', 'created_at')->format('DD/MM/YYYY')->pickerDisplayFormat('d/m/Y'),
             BelongsTo::make('User'),
             Select::make('Status')->options(OrderModel::STATUSES)->displayUsingLabels(),
             Select::make('Shipping Type', 'shipping_type')->options(OrderModel::SHIPPING_TYPES)->displayUsingLabels(),

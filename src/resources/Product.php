@@ -11,6 +11,8 @@ use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\BelongsTo;
 use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\BelongsToMany;
+use Laravel\Nova\Http\Requests\ResourceIndexRequest;
 
 class Product extends Resource
 {
@@ -50,16 +52,28 @@ class Product extends Resource
             Text::make('Name')->rules('required'),
             Text::make('Short Description', 'short_description')->rules('required')->hideFromIndex(),
             Textarea::make('Description')->rules('required'),
-            Number::make('Stock')->rules('required'),
-            Number::make('Price')->rules('required')->step('0.01'),
+            Number::make('Stock')->rules('required')->hideFromIndex(function (ResourceIndexRequest $request) {
+                return $request->viaRelationship();
+            }),
+            Number::make('Price')->rules('required')->step('0.01')->hideFromIndex(function (ResourceIndexRequest $request) {
+                return $request->viaRelationship();
+            }),
             BelongsTo::make('Category'),
             HasOne::make('Features', 'features', 'App\Nova\Features'),
-            Boolean::make('Visible'),
+            Boolean::make('Visible')->hideFromIndex(function (ResourceIndexRequest $request) {
+                return $request->viaRelationship();
+            }),
             Images::make('Images')
                 ->hideFromIndex()
                 ->setFileName(function($originalFilename, $extension){
                     return md5($originalFilename) . '.' . $extension;
-                })
+                }),
+            BelongsToMany::make('Orders')->fields(function() {
+                return [
+                    Number::make('Quantity'),
+                    Number::make('Price')->step('0.01'),
+                ];
+            }),
         ];
     }
 
