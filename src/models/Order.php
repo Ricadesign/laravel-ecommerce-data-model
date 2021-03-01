@@ -32,4 +32,9 @@ class Order extends Model
     {
       return $this->belongsToMany(Product::class)->withPivot('quantity', 'price');
     }
+
+    public function scopeNotRefunded($query)
+    {
+        return $query->where('status', '<>', self::STATUSES['refunded']);
+    }
 }
