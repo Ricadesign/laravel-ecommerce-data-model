@@ -23,8 +23,8 @@ class CreateOrdersTable extends Migration
             $table->date('shipping_date');
             $table->string('shipping_address');
             $table->date('refund_deadline');
-            $table->float('subtotal');
-            $table->float('total');
+            $table->decimal('subtotal');
+            $table->decimal('total');
             $table->timestamps();
         });
     }

@@ -24,15 +24,21 @@ class OrderSeeder extends Seeder
         );
 
         $user->addresses()->saveMany([
-          Address::factory()->make(),
-          Address::factory()->make(['favorite' => false]),
+            Address::factory()->make(),
+            Address::factory()->make(['favorite' => false]),
         ]);
 
         Order::all()->each(function($order) {
-            $order->products()->attach(
-                Product::whereIn('id', [1, 2, 3])->get(),
-                ['quantity' => 1, 'price' => 5]
-            );
+            Product::whereIn('id', [1, 2, 3])->get()->each(function($product) use ($order) {
+                $order->products()->attach(
+                    $product,
+                    [
+                        'quantity' => 1,
+                        'price' => 5,
+                        'product_name' => $product->name,
+                    ]
+                );
+            });
         });
     }
 }

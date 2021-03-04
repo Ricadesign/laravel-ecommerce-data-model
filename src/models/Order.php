@@ -30,7 +30,7 @@ class Order extends Model
 
     public function products()
     {
-      return $this->belongsToMany(Product::class)->withPivot('quantity', 'price');
+      return $this->belongsToMany(Product::class)->withPivot('quantity', 'price', 'product_name');
     }
 
     public function scopeNotRefunded($query)

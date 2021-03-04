@@ -5,11 +5,12 @@ namespace App\Nova;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Currency;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\BelongsToMany;
 use App\Models\Order as OrderModel;
+use App\Nova\Fields\OrderProductFields;
 use Laravel\Nova\Fields\Select;
 
 class Order extends Resource
@@ -55,14 +56,9 @@ class Order extends Resource
             Date::make('Shipping Date', 'shipping_date')->format('DD/MM/YYYY')->pickerDisplayFormat('d/m/Y'),
             Text::make('Shipping Address', 'shipping_address')->hideFromIndex(),
             Date::make('Refund deadline', 'refund_deadline')->format('DD/MM/YYYY')->pickerDisplayFormat('d/m/Y'),
-            Number::make('Subtotal')->step('0.01'),
-            Number::make('Total')->step('0.01'),
-            BelongsToMany::make('Products')->fields(function () {
-                return [
-                    Number::make('Quantity'),
-                    Number::make('Price')->step('0.01'),
-                ];
-            }),
+            Currency::make('Subtotal'),
+            Currency::make('Total'),
+            BelongsToMany::make('Products')->fields(new OrderProductFields),
         ];
     }
 

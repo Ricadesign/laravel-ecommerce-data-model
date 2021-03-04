@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('short_description');
             $table->string('description');
             $table->foreignId('category_id')->constrained();
-            $table->decimal('price', 8, 2);
+            $table->decimal('price');
             $table->unsignedBigInteger('stock');
             $table->boolean('visible');
             $table->timestamps();

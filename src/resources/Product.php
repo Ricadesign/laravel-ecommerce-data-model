@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Currency;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\HasOne;
@@ -13,6 +14,7 @@ use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Http\Requests\ResourceIndexRequest;
+use App\Nova\Fields\OrderProductFields;
 
 class Product extends Resource
 {
@@ -49,13 +51,15 @@ class Product extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
-            Text::make('Name')->rules('required'),
+            Text::make('Name')->rules('required')->hideFromIndex(function (ResourceIndexRequest $request) {
+                return $request->viaRelationship();
+            }),
             Text::make('Short Description', 'short_description')->rules('required')->hideFromIndex(),
             Textarea::make('Description')->rules('required'),
             Number::make('Stock')->rules('required')->hideFromIndex(function (ResourceIndexRequest $request) {
                 return $request->viaRelationship();
             }),
-            Number::make('Price')->rules('required')->step('0.01')->hideFromIndex(function (ResourceIndexRequest $request) {
+            Currency::make('Price')->rules('required')->hideFromIndex(function (ResourceIndexRequest $request) {
                 return $request->viaRelationship();
             }),
             BelongsTo::make('Category'),
@@ -68,12 +72,7 @@ class Product extends Resource
                 ->setFileName(function($originalFilename, $extension){
                     return md5($originalFilename) . '.' . $extension;
                 }),
-            BelongsToMany::make('Orders')->fields(function() {
-                return [
-                    Number::make('Quantity'),
-                    Number::make('Price')->step('0.01'),
-                ];
-            }),
+            BelongsToMany::make('Orders')->fields(new OrderProductFields),
         ];
     }
 
