@@ -3,9 +3,9 @@
     "description": "Laravel migrations, models and Nova resources for the creation of an ecommerce site",
     "type": "library",
     "require": {
-        "php": "^7.0",
+        "php": "^7.0|^8.0",
         "ebess/advanced-nova-media-library": "^3.4",
-        "laravel/framework": "^7.0 | ^8.0",
+        "laravel/framework": "^7.0 | ^8.0 | ^9.0 | ^10.0",
         "laravel/nova": "~3.0",
         "spatie/laravel-medialibrary": "^9.0.0"
     },
